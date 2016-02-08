@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
 using ThroneSeed.ViewModels;
 
 namespace ThroneSeed
@@ -21,10 +8,24 @@ namespace ThroneSeed
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly SeederViewModel ViewModel = new SeederViewModel();
+
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new SeederViewModel();
+            Seed.Focus();
+
+            DataContext = ViewModel;
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.SetSeed(Seed.Text);
+        }
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.ClearSeed();
         }
     }
 }
