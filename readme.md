@@ -7,3 +7,8 @@ Vlambeer's Nuclear Throne supports seeded runs. Use this tool to (un)set the see
 ## Seed
 
 The tool controls the `seed.txt` file in `C:\Users\<user>\AppData\Local\nuclearthrone`.
+
+## Requirements
+
+1. Nuclear Throne (Windows version)
+2. .NET 4.5.2
