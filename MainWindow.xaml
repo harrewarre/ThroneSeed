@@ -7,18 +7,18 @@
         mc:Ignorable="d"
         ResizeMode="CanMinimize"
         Background="#291255"
-        Title="ThroneSeed" Height="270" Width="525" Icon="Assets/barrel.png">
+        Title="ThroneSeed" Height="300" Width="525" Icon="Assets/barrel.png">
 
     <StackPanel Margin="0,0,0,1">
         <StackPanel.Background>
             <ImageBrush ImageSource="Assets\guns.png" Stretch="Uniform" AlignmentX="Left" AlignmentY="Bottom" Opacity=".5">
             </ImageBrush>
         </StackPanel.Background>
-        
+
         <Image Height="60" Margin="5" Source="Assets/nt_logo.png"/>
 
         <TextBlock Foreground="#fff" TextAlignment="Center" VerticalAlignment="Center" Text="{Binding Mode=TwoWay, Path=SeedMessage}" Margin="10" Height="20">
-            
+
         </TextBlock>
 
         <TextBox Name="Seed" FontSize="30" Margin="25 5" Text="{Binding Mode=TwoWay, Path=SeedValue, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="False" TextAlignment="Center"></TextBox>
@@ -26,6 +26,15 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
             <Button Name="Save" Click="Save_Click" IsEnabled="{Binding Mode=OneWay, Path=IsValidSeed}" Width="220" Margin="0 0 10 0" Padding="30 15" Content="Set Seed"></Button>
             <Button Name="Clear" Click="Clear_Click" Width="220" Margin="10 0 0 0" Padding="30 15" Content="Clear Seed"></Button>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Image Height="15" Margin="5" Source="Assets/harrewarre.png" VerticalAlignment="Center" />
+            <TextBlock FontSize="10" VerticalAlignment="Center" Margin="5 0" Foreground="#fff">
+                harrewarre |
+                <Hyperlink NavigateUri="https://github.com/harrewarre/ThroneSeed" RequestNavigate="Hyperlink_RequestNavigate">github</Hyperlink> |
+<Hyperlink NavigateUri="https://twitter.com/harrewarre" RequestNavigate="Hyperlink_RequestNavigate">twitter</Hyperlink>
+            </TextBlock>
         </StackPanel>
 
     </StackPanel>

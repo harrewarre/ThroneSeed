@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Navigation;
 using ThroneSeed.ViewModels;
 
 namespace ThroneSeed
@@ -26,6 +27,11 @@ namespace ThroneSeed
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
             ViewModel.ClearSeed();
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            System.Diagnostics.Process.Start(e.Uri.ToString());
         }
     }
 }
