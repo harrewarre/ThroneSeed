@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace ThroneSeed.ViewModels
 {
@@ -16,40 +11,72 @@ namespace ThroneSeed.ViewModels
         private string SeedValueBackingField;
         private string SeedFilePath;
 
+        public string SeedMessageBackingField;
+
         public SeederViewModel()
         {
             SeedFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "nuclearthrone", "seed.txt");
             SeedValue = LoadSeed();
+            SeedMessage = "Set or change the seed using the input below.";
         }
 
         public void SetSeed(string newSeed)
         {
-            using (var writer = new StreamWriter(SeedFilePath, false))
+            try
             {
-                writer.WriteLine(newSeed);
+                using (var writer = new StreamWriter(SeedFilePath, false))
+                {
+                    writer.WriteLine(newSeed);
+                }
+
+                SeedMessage = string.Format("Seed set to {0} !", newSeed);
+            }
+            catch (Exception ex)
+            {
+                SeedMessage = "Failed to write seed to seedfile!";
+                Console.Write(ex);
             }
         }
 
         public void ClearSeed()
         {
-            if(File.Exists(SeedFilePath))
+            try
             {
-                File.Delete(SeedFilePath);
-            }
+                if (File.Exists(SeedFilePath))
+                {
+                    File.Delete(SeedFilePath);
+                }
 
-            SeedValue = string.Empty;
+                SeedValue = string.Empty;
+                SeedMessage = "Seed cleared!";
+            }
+            catch (Exception ex)
+            {
+                SeedMessage = "Failed to clear seedfile!";
+                Console.Write(ex);
+            }
         }
 
         private string LoadSeed()
         {
-            if(!File.Exists(SeedFilePath))
+            try
             {
-                return string.Empty;
-            }
+                if (!File.Exists(SeedFilePath))
+                {
+                    return string.Empty;
+                }
 
-            using (var reader = new StreamReader(SeedFilePath))
+                using (var reader = new StreamReader(SeedFilePath))
+                {
+                    return reader.ReadToEnd().Trim();
+                }
+            }
+            catch (Exception ex)
             {
-                return reader.ReadToEnd().Trim();
+                SeedMessage = "Failed to load seed from seedfile!";
+                Console.Write(ex);
+
+                return string.Empty;
             }
         }
 
@@ -75,6 +102,16 @@ namespace ThroneSeed.ViewModels
                 SeedValueBackingField = value;
                 NotifyPropertyChanged("SeedValue");
                 NotifyPropertyChanged("IsValidSeed");
+            }
+        }
+
+        public string SeedMessage
+        {
+            get { return SeedMessageBackingField; }
+            set
+            {
+                SeedMessageBackingField = value;
+                NotifyPropertyChanged("SeedMessage");
             }
         }
 

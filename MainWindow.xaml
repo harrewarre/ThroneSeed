@@ -17,8 +17,8 @@
         
         <Image Height="60" Margin="5" Source="Assets/nt_logo.png"/>
 
-        <TextBlock Foreground="#fff" TextAlignment="Center" Margin="10">
-            Change or set the seed in the textbox below.
+        <TextBlock Foreground="#fff" TextAlignment="Center" VerticalAlignment="Center" Text="{Binding Mode=TwoWay, Path=SeedMessage}" Margin="10" Height="20">
+            
         </TextBlock>
 
         <TextBox Name="Seed" FontSize="30" Margin="25 5" Text="{Binding Mode=TwoWay, Path=SeedValue, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="False" TextAlignment="Center"></TextBox>
