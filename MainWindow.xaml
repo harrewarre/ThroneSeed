@@ -5,8 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ThroneSeed"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        ResizeMode="NoResize"
+        Background="#291255"
+        Title="ThroneSeed" Height="270" Width="525">
+    <StackPanel Margin="0,0,0,1">
+
+        <Image Height="60" Margin="5" Source="Assets/nt_logo.png"/>
+
+        <TextBlock Foreground="#fff" TextAlignment="Center" Margin="10">
+            Change or set the seed in the textbox below.
+        </TextBlock>
+
+        <TextBox Name="Seed" FontSize="30" Margin="25 5" Text="{Binding Mode=TwoWay, Path=SeedValue, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Center"></TextBox>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+            <Button IsEnabled="{Binding Mode=OneWay, Path=IsValidSeed}" Width="224" Margin="0 0 10 0" Padding="30 15" Content="Set Seed"></Button>
+            <Button Width="224" Margin="10 0 0 0" Padding="30 15" Content="Clear Seed"></Button>
+        </StackPanel>
+
+    </StackPanel>
 </Window>
