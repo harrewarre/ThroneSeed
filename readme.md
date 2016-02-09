@@ -4,7 +4,7 @@
 
 ## Seeded runs
 
-Vlambeer's Nuclear Throne supports seeded runs. Use this tool to (un)set the seed that the game will use to generate levels.
+Vlambeer's [Nuclear Throne](http://nuclearthrone.com/) supports seeded runs. Use this tool to (un)set the seed that the game will use to generate levels.
 
 ## Seed
 
