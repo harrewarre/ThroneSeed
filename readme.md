@@ -1,5 +1,7 @@
 # ThroneSeed
 
+![ThroneSeed](http://i.imgur.com/C9C70ZB.png)
+
 ## Seeded runs
 
 Vlambeer's Nuclear Throne supports seeded runs. Use this tool to (un)set the seed that the game will use to generate levels.
